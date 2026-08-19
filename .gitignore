@@ -1,0 +1,11 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+
+# Downloaded gh-aw binaries (fetched on first run)
+gh_aw_mirror/_bin/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/

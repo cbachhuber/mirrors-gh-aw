@@ -1,0 +1,37 @@
+name: Mirror gh-aw
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - id: bump
+        run: |
+          out="$(python update.py)"
+          echo "$out"
+          if [ "${out%% *}" = "up-to-date:" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "version=$out" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.bump.outputs.changed == 'true'
+        env:
+          VERSION: ${{ steps.bump.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Mirror gh-aw v${VERSION}"
+          git tag "v${VERSION}"
+          git push origin HEAD --tags

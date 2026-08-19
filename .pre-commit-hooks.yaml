@@ -1,0 +1,14 @@
+- id: gh-aw-compile
+  name: gh-aw compile
+  description: Compile gh-aw agentic-workflow Markdown into GitHub Actions .lock.yml files, failing if any lock is stale.
+  entry: gh-aw compile --no-check-update
+  language: python
+  files: ^\.github/workflows/[^/]+\.md$
+  require_serial: true
+
+- id: gh-aw
+  name: gh-aw
+  description: Run an arbitrary gh-aw command (pass the subcommand and flags via args).
+  entry: gh-aw
+  language: python
+  pass_filenames: false
