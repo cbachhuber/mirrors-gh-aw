@@ -9,7 +9,7 @@ description = "pre-commit mirror for the gh-aw agentic-workflow compiler"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "gh-aw mirror maintainers" }]
+authors = [{ name = "Chris Bachhuber" }]
 keywords = ["pre-commit", "gh-aw", "github-actions", "agentic-workflows"]
 
 [project.urls]
