@@ -1,0 +1,29 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  hook:
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest # linux/amd64
+          - ubuntu-24.04-arm # linux/arm64
+          - macos-latest # darwin/arm64
+          - windows-latest # windows/amd64
+          - windows-11-arm # windows/arm64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v6
+      - name: Run hook tests
+        env:
+          PREK: uvx prek
+          GITHUB_TOKEN: ${{ github.token }}
+          GH_AW_GITHUB_TOKEN: ${{ github.token }}
+        run: uv run --group test -- pytest -v

@@ -1,5 +1,8 @@
 # mirrors-gh-aw
 
+[![Test](https://github.com/cbachhuber/mirrors-gh-aw/actions/workflows/test.yml/badge.svg)](https://github.com/cbachhuber/mirrors-gh-aw/actions/workflows/test.yml)
+[![Mirror gh-aw](https://github.com/cbachhuber/mirrors-gh-aw/actions/workflows/mirror.yml/badge.svg)](https://github.com/cbachhuber/mirrors-gh-aw/actions/workflows/mirror.yml)
+
 A [prek](https://github.com/j178/prek)/[pre-commit](https://pre-commit.com) mirror for the [gh-aw](https://github.com/github/gh-aw) agentic-workflow compiler.
 
 It lets you run `gh aw compile` as a pre-commit hook **without installing `gh` or the `gh-aw` extension on the machine**.

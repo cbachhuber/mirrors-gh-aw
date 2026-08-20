@@ -9,3 +9,8 @@ gh_aw_mirror/_bin/
 build/
 dist/
 *.egg-info/
+
+# Local dev / test artifacts
+.venv/
+.pytest_cache/
+uv.lock
