@@ -24,4 +24,6 @@ jobs:
       - name: Run hook tests
         env:
           PREK: uvx prek
+          GITHUB_TOKEN: ${{ github.token }}
+          GH_AW_GITHUB_TOKEN: ${{ github.token }}
         run: uv run --group test -- pytest -v
