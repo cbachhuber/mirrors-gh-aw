@@ -39,17 +39,16 @@ _ARCH = {
     "i686": "386",
     "x86": "386",
 }
-_OS = {"linux": "linux", "darwin": "darwin", "windows": "windows"}
+_OS = frozenset({"linux", "darwin", "windows"})
 
 
 def _asset_name() -> str:
     system = platform.system().lower()
     machine = platform.machine().lower()
-    os_name = _OS.get(system)
     arch = _ARCH.get(machine)
-    if os_name is None or arch is None:
+    if system not in _OS or arch is None:
         raise SystemExit(f"gh-aw-mirror: unsupported platform {system}/{machine}")
-    return f"{os_name}-{arch}.exe" if os_name == "windows" else f"{os_name}-{arch}"
+    return f"{system}-{arch}.exe" if system == "windows" else f"{system}-{arch}"
 
 
 def _expected_sha(asset: str) -> str:
