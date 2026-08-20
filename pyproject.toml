@@ -22,7 +22,6 @@ gh-aw = "gh_aw_mirror:main"
 "Upstream" = "https://github.com/github/gh-aw"
 
 [tool.rumdl.MD013]
-# Enforce one sentence per line, without a column limit.
 require-sentence-per-line = true
 reflow = true
 line-length = 10000
@@ -39,5 +38,4 @@ version = {attr = "gh_aw_mirror.__version__"}
 gh_aw_mirror = ["checksums.txt"]
 
 [tool.uv]
-# Make the test group resolvable by ty (and plain `uv run`) without --group.
 default-groups = ["test"]
