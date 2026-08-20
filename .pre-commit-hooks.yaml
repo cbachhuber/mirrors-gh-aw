@@ -5,7 +5,6 @@
   language: python
   files: ^\.github/workflows/[^/]+\.md$
   require_serial: true
-
 - id: gh-aw
   name: gh-aw
   description: Run an arbitrary gh-aw command (pass the subcommand and flags via args).

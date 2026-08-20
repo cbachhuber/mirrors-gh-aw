@@ -65,7 +65,7 @@ def _ensure_binary() -> Path:
     if binary.exists():
         return binary
     url = _RELEASE.format(version=__version__, asset=asset)
-    with urllib.request.urlopen(url) as resp:  # noqa: S310 - pinned https release URL
+    with urllib.request.urlopen(url) as resp:
         data = resp.read()
     actual = hashlib.sha256(data).hexdigest()
     expected = _expected_sha(asset)

@@ -88,4 +88,6 @@ def test_hook_recompiles_stale_lock_then_is_idempotent(consumer_repo: Path) -> N
     assert ok.returncode == 0, ok.stdout + ok.stderr
 
     diff = _run(["git", "diff", "--stat"], consumer_repo)
-    assert diff.stdout.strip() == "", f"hook modified files on a clean run:\n{diff.stdout}"
+    assert diff.stdout.strip() == "", (
+        f"hook modified files on a clean run:\n{diff.stdout}"
+    )
