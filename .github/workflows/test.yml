@@ -1,11 +1,9 @@
 name: Test
-
 on:
   push:
     branches: [main]
   pull_request:
   workflow_dispatch:
-
 jobs:
   hook:
     strategy:
@@ -27,3 +25,9 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           GH_AW_GITHUB_TOKEN: ${{ github.token }}
         run: uv run --group test -- pytest -v
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v6
+      - run: uvx prek run --all-files --show-diff-on-failure

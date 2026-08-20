@@ -28,12 +28,12 @@ def _current_version() -> str:
 
 
 def main() -> None:
-    with urllib.request.urlopen(LATEST_API) as resp:  # noqa: S310
+    with urllib.request.urlopen(LATEST_API) as resp:
         latest = json.load(resp)["tag_name"].lstrip("v")
     if latest == _current_version():
         print(f"up-to-date: {latest}")
         return
-    with urllib.request.urlopen(CHECKSUMS_URL.format(v=latest)) as resp:  # noqa: S310
+    with urllib.request.urlopen(CHECKSUMS_URL.format(v=latest)) as resp:
         CHECKSUMS.write_bytes(resp.read())
     INIT.write_text(
         re.sub(r'__version__ = "[^"]+"', f'__version__ = "{latest}"', INIT.read_text())

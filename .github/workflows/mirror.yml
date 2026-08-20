@@ -1,13 +1,10 @@
 name: Mirror gh-aw
-
 on:
   schedule:
     - cron: "0 6 * * *"
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   mirror:
     runs-on: ubuntu-latest
