@@ -24,7 +24,7 @@ from pathlib import Path
 
 # Single source of truth for the mirrored gh-aw version; the git tag and the
 # committed checksums.txt are kept in sync with it by update.py.
-__version__ = "0.87.10"
+__version__ = "0.88.2"
 
 _RELEASE = "https://github.com/github/gh-aw/releases/download/v{version}/{asset}"
 _PKG = Path(__file__).resolve().parent
